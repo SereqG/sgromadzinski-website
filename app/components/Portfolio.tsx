@@ -95,11 +95,11 @@ function Hero() {
           </div>
         </div>
 
-        <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-foreground/15 pt-6 font-mono text-xs uppercase tracking-[0.18em] text-foreground/70">
-          <div>Full-Stack Engineer</div>
-          <div>AI-based Systems Developer</div>
-          <div className="md:text-right">Latency · Design · Scale</div>
-          <div className="md:text-right text-accent">v4.0 / 2026</div>
+        <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-3 md:gap-6 border-t border-foreground/15 pt-6 font-mono text-[10px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.18em] text-foreground/70 leading-snug">
+          <div>Programowanie full-stack</div>
+          <div>Systemy oparte o AI</div>
+          <div>Rozwój oprogramowania</div>
+          <div className="text-right text-accent">v4.0 / 2026</div>
         </div>
 
         <div className="mt-10 flex flex-wrap gap-4">
@@ -118,21 +118,19 @@ function Hero() {
 
 function Marquee() {
   const items = [
-    "AI Agents",
-    "Multi-Agent Systems",
-    "Edge Compute",
+    "Agenty AI",
+    "Automatyzacje workflow",
+    "Aplikacje webowe",
     "TypeScript",
     "RAG Pipelines",
-    "Distributed Systems",
-    "Design Engineering",
-    "LLM Tooling",
+    "Optymalizacja SEO",
   ];
   const row = [...items, ...items];
   return (
     <div className="overflow-hidden border-y border-foreground/15 py-5 bg-background">
-      <div className="marquee-track flex whitespace-nowrap gap-12 font-display text-3xl md:text-5xl">
+      <div className="marquee-track flex whitespace-nowrap font-display text-3xl md:text-5xl">
         {row.map((t, i) => (
-          <span key={i} className="flex items-center gap-12">
+          <span key={i} className="flex items-center gap-12 pr-12">
             {t}
             <span className="text-accent">✦</span>
           </span>
@@ -157,25 +155,17 @@ function Operator() {
             className="lg:col-span-7 space-y-6 text-lg md:text-xl leading-relaxed max-w-2xl"
           >
             <p>
-              Buduję inteligentne systemy, gdzie precyzja techniczna spotyka się
-              z wyczuciem produktu. Od skalowalnej architektury po dopracowane
-              doświadczenia użytkownika, moja praca łączy głęboką inżynierię z
-              designem zorientowanym na człowieka. Mam doświadczenie w budowaniu
-              wszystkiego, od systemów agentowych AI po nowoczesne aplikacje
-              full-stack, zawsze z naciskiem na skalowalność, niezawodność i elegancję.
+              Tworzę inteligentne systemy, łącząc solidne zaplecze techniczne z myśleniem produktowym. Projektuję i rozwijam rozwiązania, które są nie tylko skalowalne i niezawodne, ale także intuicyjne dla użytkowników. Mam doświadczenie w budowaniu zarówno systemów AI opartych na agentach, jak i nowoczesnych aplikacji full-stack. W pracy stawiam na prostotę, jakość wykonania i dbałość o detale.
             </p>
             <p className="text-foreground/70">
-              Mój obecny fokus to warstwa między LLM-ami a rzeczywistymi
-              workflow: agenty, które nie halucynują, frameworki ewaluacyjne,
-              które faktycznie korelują, i interfejsy sprawiające, że
-              probabilistyczne systemy zachowują się deterministycznie.
+              Obecnie skupiam się na budowaniu rozwiązań, które skutecznie łączą modele AI z rzeczywistymi procesami biznesowymi. Tworzę systemy agentowe, rozwijam metody oceny jakości ich działania oraz projektuję interfejsy, które sprawiają, że nawet złożone systemy oparte na AI są przewidywalne i łatwe w użyciu.
             </p>
           </motion.div>
 
           <motion.aside {...fadeUp} className="lg:col-span-5">
             <div className="blob-soft border border-foreground bg-surface p-8 relative">
               <div className="absolute -top-3 left-6 bg-background px-3 font-mono text-[10px] uppercase tracking-[0.25em] text-accent">
-                Aktualnie uczę się o
+                Aktualnie rozwijam się
               </div>
               <ul className="space-y-3 font-mono text-sm">
                 {[
@@ -193,7 +183,6 @@ function Operator() {
                       <span className="text-accent">{n}</span>
                       <span className="uppercase tracking-wider">{t}</span>
                     </span>
-                    <span className="text-foreground/40">aktywne</span>
                   </li>
                 ))}
               </ul>
@@ -208,33 +197,33 @@ function Operator() {
 function Capabilities() {
   const caps = [
     {
-      t: "AI Agents",
-      d: "Autonomiczne wykorzystanie AI do wypełnienia złożonych zadań. AI może wykorzystywać narzędzia oraz pamięć a nad wszystkim czuwają systemy bezpieczeństwa.",
+      t: "Agenty AI",
+      d: "Autonomiczne wykorzystanie AI do wypełnienia złożonych zadań.",
       k: "LangGraph · OpenAI · Anthropic",
     },
     {
-      t: "Automation",
-      d: "Silniki workflow, które automatyzują procesy i eliminują potrzebę ręcznych interwencji. Wysoka redukcja czasu i kosztów.",
+      t: "Automatyzacja",
+      d: "Tworzenie rozwiązań automatyzujących powtarzalne zadania i procesy, zwiększając efektywność i produktywność.",
       k: "Python · n8n",
     },
     {
-      t: "Full-Stack Systems",
+      t: "Rozwiązania full-stack",
       d: "Inżynieria produktu od początku do końca. Od projektowania schematu do pixel-perfect UI.",
       k: "TypeScript · React · Postgres",
     },
     {
-      t: "Architecture",
-      d: "Kluczowy aspekt wytwarzania oprogramowania. Dobra architektura zapewnia wysoką skalowalność i niezawodność a także ogranicza koszty utrzymania.",
+      t: "Architektura",
+      d: "Przemyślane projektowanie systemów, które są skalowalne, niezawodne i łatwe w utrzymaniu.",
       k: "Event sourcing · CQRS · DDD",
     },
     {
-      t: "Optimization",
-      d: "Optymalizacja systemów pod kątem wydajności, kosztów i skalowalności. Przyśpiesz działanie aplikacji oraz pozycjonowanie.",
+      t: "Optymalizacja",
+      d: "Optymalizacja systemów pod kątem wydajności, kosztów i skalowalności.",
       k: "SEO",
     },
     {
-      t: "AI Adoption",
-      d: "Wdrażanie i wdrażanie rozwiązań AI w organizacjach. Wsparcie dla zespołów w procesie adopcji technologii AI.",
+      t: "Wdrażanie AI",
+      d: "Wsparcie dla zespołów w procesie adopcji technologii AI.",
       k: "Consultation · Training",
     },
   ];
@@ -282,14 +271,14 @@ function Evolution() {
       t: "Początek",
       y: "2021-2022",
       s: "HTML · CSS · JavaScript",
-      d: "Początek mojej drogi z web developmentem. Tworzyłem proste, hobbistyczne strony internetowe skupiając sie na wartwie frontendowej.",
+      d: "Początek mojej drogi z pisaniem kodu. Tworzyłem proste, hobbistyczne strony internetowe skupiając sie na warstwie frontend.",
     },
     {
       v: "2.0",
       t: "Nauka zaawansowanych technologii",
       y: "2022 — 2024",
       s: "Python · React · Postgres",
-      d: "Stale poszerzam swoje umiejętności w zakresie full-stack developmentu. Moje projekty stały się bardziej złożone i skalowalne.",
+      d: "Stale poszerzam swoje umiejętności. Moje projekty stały się bardziej złożone i skalowalne.",
     },
     {
       v: "3.0",
@@ -325,9 +314,8 @@ function Evolution() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.6 }}
-                className={`relative pl-8 md:pl-0 md:grid md:grid-cols-2 md:gap-16 ${
-                  i % 2 ? "md:[&>div:first-child]:order-2" : ""
-                }`}
+                className={`relative pl-8 md:pl-0 md:grid md:grid-cols-2 md:gap-16 ${i % 2 ? "md:[&>div:first-child]:order-2" : ""
+                  }`}
               >
                 <div className={i % 2 ? "md:text-left md:pl-10" : "md:text-right md:pr-10"}>
                   <p className="font-mono text-xs uppercase tracking-[0.2em] text-foreground/50">
@@ -339,9 +327,8 @@ function Evolution() {
                   <p className="font-display text-xl md:text-2xl mt-2">{rel.t}</p>
                 </div>
                 <div
-                  className={`mt-3 md:mt-2 ${
-                    i % 2 ? "md:pr-10 md:text-right" : "md:pl-10"
-                  }`}
+                  className={`mt-3 md:mt-2 ${i % 2 ? "md:pr-10 md:text-right" : "md:pl-10"
+                    }`}
                 >
                   <p className="text-foreground/75 max-w-md md:inline-block">{rel.d}</p>
                   <p className="mt-3 font-mono text-xs uppercase tracking-[0.18em] text-foreground/50">
@@ -367,7 +354,7 @@ function CaseFiles() {
       problem:
         "Brak systemowego podejścia do oceny jakości stron internetowych. Subiektywne opinie, brak danych do monitorowania postępów.",
       solution:
-        "Zbudowałem usługę oceny jakości stron internetowych, która wykorzystuje systemowe podejście do analizy i monitorowania postępów. Analizje wydajność, dostępność, SEO oraz bezpieczeństwo stron internetowych według jasno określonych i ogólnie przyjętych standardów. Dzięki integracji z AI otrzymujemy raport, który jest zarówno szczegółowy, jak i łatwy do zrozumienia, z jasnymi rekomendacjami dotyczącymi poprawy.",
+        "Zbudowałem narzędzie do oceny jakości stron internetowych. Analizje wydajność, dostępność, SEO oraz bezpieczeństwo stron internetowych według jasno określonych i ogólnie przyjętych standardów. Integracja z AI pozwala generowanie raportów.",
       stack: ["TypeScript", "React", "Python", "FastAPI"],
       outcome: "Oszczędność czasu spędzonego na podstawowym audycie stron internetowych",
     },
@@ -377,7 +364,7 @@ function CaseFiles() {
       client: "Prywatny projekt",
       problem: "Brak zorganizowanej struktury dla moich plików.",
       solution:
-        "Autorski system do tworzenia workflow oczyszczenia plików. System oparty na edytowalnym workflow umożliwia definiowanie reguł organizacji plików, takich jak przenoszenie, usuwanie czy tagowanie. Dzięki integracji z AI, system może inteligentnie kategoryzować i organizować pliki na podstawie ich zawartości i metadanych, co pozwala na utrzymanie porządku bez konieczności ręcznej interwencji.",
+        "Autorski system do samodzielnego tworzenia mechanizmów automatyzacji. System oparty na edytowalnym workflow umożliwia definiowanie reguł organizacji plików, takich jak przenoszenie czy usuwanie. Dzięki integracji z AI, system może inteligentnie kategoryzować i organizować pliki na podstawie ich zawartości i metadanych, co pozwala na utrzymanie porządku bez konieczności ręcznej interwencji.",
       stack: ["React", "Python", "React flow", "Redis"],
       outcome: "Zorganizowane pliki i oszczędność czasu spędzonego na ręcznym porządkowaniu",
     },
@@ -499,7 +486,6 @@ function Contact() {
               <p className="text-background/60">$ status</p>
               <p className="mb-3 text-accent">
                 &gt; Gotowy, żeby razem coś zbudować?
-                <span className="cursor-blink" />
               </p>
               <p className="text-background/60">$ contact --list</p>
               <div className="mt-2 space-y-2 flex-1">
@@ -516,7 +502,7 @@ function Contact() {
                 ))}
               </div>
               <p className="mt-6 text-background/40 text-[11px]">
-                — awaiting transmission —<span className="cursor-blink" />
+                — awaiting transmission —
               </p>
             </div>
           </motion.div>
