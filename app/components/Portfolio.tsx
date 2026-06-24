@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -32,7 +33,6 @@ function Nav() {
           <a href="#capabilities" className="hover:text-accent transition-colors">Umiejętności</a>
           <a href="#evolution" className="hover:text-accent transition-colors">Moja droga</a>
           <a href="#cases" className="hover:text-accent transition-colors">Case Studies</a>
-          <a href="#contact" className="hover:text-accent transition-colors">Kontakt</a>
         </nav>
         <a
           href="#contact"
@@ -126,9 +126,104 @@ function Marquee() {
     "Optymalizacja SEO",
   ];
   const row = [...items, ...items];
+  const trackRef = useRef<HTMLDivElement>(null);
+  const drag = useRef({ active: false, startX: 0, startOffset: 0, duration: 10 });
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const onMouseDown = (e: MouseEvent) => {
+      const style = getComputedStyle(track);
+      const matrix = new DOMMatrixReadOnly(style.transform);
+      const currentX = matrix.m41;
+      const duration = parseFloat(style.animationDuration) || 10;
+
+      track.style.animation = "none";
+      track.style.transform = `translateX(${currentX}px)`;
+
+      drag.current = { active: true, startX: e.clientX, startOffset: currentX, duration };
+      e.preventDefault();
+    };
+
+    const resume = () => {
+      const matrix = new DOMMatrixReadOnly(getComputedStyle(track).transform);
+      const currentX = matrix.m41;
+      const halfWidth = track.scrollWidth / 2;
+      const { duration } = drag.current;
+
+      // Wrap into [-halfWidth, 0) then derive how far through the animation cycle we are
+      let normalizedX = ((currentX % halfWidth) + halfWidth) % halfWidth - halfWidth;
+      if (normalizedX === -halfWidth) normalizedX = 0;
+
+      const delay = (Math.abs(normalizedX) / halfWidth) * duration;
+
+      // Setting transform="" and animation in the same task — browser batches the
+      // recalc, so the animation starts at the correct keyframe with no visual jump.
+      track.style.transform = "";
+      track.style.animation = `marquee ${duration}s linear -${delay}s infinite`;
+    };
+
+    const applyDelta = (clientX: number) => {
+      const delta = clientX - drag.current.startX;
+      track.style.transform = `translateX(${drag.current.startOffset + delta}px)`;
+    };
+
+    const onMouseMove = (e: MouseEvent) => {
+      if (!drag.current.active) return;
+      applyDelta(e.clientX);
+    };
+
+    const onMouseUp = () => {
+      if (!drag.current.active) return;
+      drag.current.active = false;
+      resume();
+    };
+
+    const onTouchStart = (e: TouchEvent) => {
+      const style = getComputedStyle(track);
+      const matrix = new DOMMatrixReadOnly(style.transform);
+      const currentX = matrix.m41;
+      const duration = parseFloat(style.animationDuration) || 10;
+
+      track.style.animation = "none";
+      track.style.transform = `translateX(${currentX}px)`;
+
+      drag.current = { active: true, startX: e.touches[0].clientX, startOffset: currentX, duration };
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      if (!drag.current.active) return;
+      e.preventDefault();
+      applyDelta(e.touches[0].clientX);
+    };
+
+    const onTouchEnd = () => {
+      if (!drag.current.active) return;
+      drag.current.active = false;
+      resume();
+    };
+
+    track.addEventListener("mousedown", onMouseDown);
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mouseup", onMouseUp);
+    track.addEventListener("touchstart", onTouchStart, { passive: true });
+    track.addEventListener("touchmove", onTouchMove, { passive: false });
+    track.addEventListener("touchend", onTouchEnd);
+
+    return () => {
+      track.removeEventListener("mousedown", onMouseDown);
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseup", onMouseUp);
+      track.removeEventListener("touchstart", onTouchStart);
+      track.removeEventListener("touchmove", onTouchMove);
+      track.removeEventListener("touchend", onTouchEnd);
+    };
+  }, []);
+
   return (
-    <div className="overflow-hidden border-y border-foreground/15 py-5 bg-background">
-      <div className="marquee-track flex whitespace-nowrap font-display text-3xl md:text-5xl">
+    <div className="overflow-hidden border-y border-foreground/15 py-5 bg-background cursor-grab active:cursor-grabbing select-none">
+      <div ref={trackRef} className="marquee-track flex whitespace-nowrap font-display text-3xl md:text-5xl">
         {row.map((t, i) => (
           <span key={i} className="flex items-center gap-12 pr-12">
             {t}
@@ -301,7 +396,7 @@ function Evolution() {
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <SectionLabel n="04">Changelog</SectionLabel>
         <motion.h2 {...fadeUp} className="font-display text-6xl md:text-9xl mt-4">
-          Moja <span className="text-accent">Droga</span>
+          Moja <span className="text-accent italic">Droga</span>
         </motion.h2>
 
         <div className="mt-16 relative">
@@ -381,7 +476,7 @@ function CaseFiles() {
           <div>
             <SectionLabel n="05">Engineering Dossier</SectionLabel>
             <motion.h2 {...fadeUp} className="font-display text-6xl md:text-9xl mt-4">
-              Case <span className="text-accent">Studies</span>
+              Case <span className="text-accent italic">Studies</span>
             </motion.h2>
           </div>
         </div>
@@ -476,8 +571,8 @@ function Contact() {
   const links = [
     {
       l: "Email",
-      v: "kontakt@sergiusz.gromadzinski.pl",
-      h: "mailto:kontakt@sergiusz.gromadzinski.pl",
+      v: "kontakt@sgromadzinski.pl",
+      h: "mailto:kontakt@sgromadzinski.pl",
     },
     { l: "GitHub", v: "github.com/SereqG", h: "https://github.com/SereqG" },
     {
@@ -516,7 +611,7 @@ function Contact() {
               <p className="text-background/60">$ contact --list</p>
               <div className="mt-2 space-y-2 flex-1">
                 {[
-                  ["email", "kontakt@sergiusz.gromadzinski.pl"],
+                  ["email", "kontakt@sgromadzinski.pl"],
                   ["github", "github.com/SereqG"],
                   ["linkedin", "linkedin.com/in/sergiusz-gromadzinski"],
                   ["location", "Polska"],

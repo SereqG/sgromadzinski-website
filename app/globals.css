@@ -105,5 +105,6 @@
 @keyframes float-y { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
 .float-slow { animation: float-y 6s ease-in-out infinite; }
 
-.marquee-track { animation: marquee 38s linear infinite; }
+.marquee-track { animation: marquee 10s linear infinite; }
+@media (min-width: 768px) { .marquee-track { animation-duration: 22s; } }
 @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
