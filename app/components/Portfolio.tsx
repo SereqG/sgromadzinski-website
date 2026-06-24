@@ -357,6 +357,8 @@ function CaseFiles() {
         "Zbudowałem narzędzie do oceny jakości stron internetowych. Analizje wydajność, dostępność, SEO oraz bezpieczeństwo stron internetowych według jasno określonych i ogólnie przyjętych standardów. Integracja z AI pozwala generowanie raportów.",
       stack: ["TypeScript", "React", "Python", "FastAPI"],
       outcome: "Oszczędność czasu spędzonego na podstawowym audycie stron internetowych",
+      demo: "https://velocity-service.pl/",
+      repo: "https://github.com/SereqG/services-monitor",
     },
     {
       n: "002",
@@ -367,6 +369,8 @@ function CaseFiles() {
         "Autorski system do samodzielnego tworzenia mechanizmów automatyzacji. System oparty na edytowalnym workflow umożliwia definiowanie reguł organizacji plików, takich jak przenoszenie czy usuwanie. Dzięki integracji z AI, system może inteligentnie kategoryzować i organizować pliki na podstawie ich zawartości i metadanych, co pozwala na utrzymanie porządku bez konieczności ręcznej interwencji.",
       stack: ["React", "Python", "React flow", "Redis"],
       outcome: "Zorganizowane pliki i oszczędność czasu spędzonego na ręcznym porządkowaniu",
+      demo: "http://pro02.mikr.us:44647/",
+      repo: "https://github.com/SereqG/file-organizer",
     },
   ];
 
@@ -436,6 +440,28 @@ function CaseFiles() {
                     Wynik
                   </p>
                   <p className="font-display text-xl leading-tight text-accent">{c.outcome}</p>
+                </div>
+                <div className="flex flex-col gap-2 mt-auto pt-2">
+                  {c.demo && (
+                    <a
+                      href={c.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pill px-4 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-center hover:bg-foreground hover:text-background transition-colors"
+                    >
+                      Otwórz demo ↗
+                    </a>
+                  )}
+                  {c.repo && (
+                    <a
+                      href={c.repo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pill px-4 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-center hover:bg-foreground hover:text-background transition-colors"
+                    >
+                      Otwórz repozytorium ↗
+                    </a>
+                  )}
                 </div>
               </aside>
             </motion.article>
