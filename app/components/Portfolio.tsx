@@ -571,8 +571,8 @@ function Contact() {
   const links = [
     {
       l: "Email",
-      v: "kontakt@sgromadzinski.pl",
-      h: "mailto:kontakt@sgromadzinski.pl",
+      v: "kontakt@gromadzinskidev.pl",
+      h: "mailto:kontakt@gromadzinskidev.pl",
     },
     { l: "GitHub", v: "github.com/SereqG", h: "https://github.com/SereqG" },
     {
@@ -611,7 +611,7 @@ function Contact() {
               <p className="text-background/60">$ contact --list</p>
               <div className="mt-2 space-y-2 flex-1">
                 {[
-                  ["email", "kontakt@sgromadzinski.pl"],
+                  ["email", "kontakt@gromadzinskidev.pl"],
                   ["github", "github.com/SereqG"],
                   ["linkedin", "linkedin.com/in/sergiusz-gromadzinski"],
                   ["location", "Polska"],
