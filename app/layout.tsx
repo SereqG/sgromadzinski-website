@@ -27,6 +27,9 @@ export const metadata: Metadata = {
     description: "Starszy Full-Stack Engineer & AI Systems Developer.",
     type: "website",
   },
+  verification: {
+    google: "Br617iwaRR3caYbnXhWrQhUzBtnCGJ37P6raiGCaJkI",
+  },
 };
 
 export default function RootLayout({
