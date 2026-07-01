@@ -19,7 +19,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sergiusz Gromadziński — Full-Stack Engineer & AI Systems Developer",
+  title: "Sergiusz Gromadziński — Programista i twórca systemów AI",
   description:
     "Starszy inżynier tworzący inteligentne systemy software, agenty AI i nowoczesne produkty cyfrowe z silnym naciskiem na design i doświadczenie użytkownika.",
   openGraph: {
