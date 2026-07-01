@@ -54,6 +54,7 @@ function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            aria-label="Sergiusz Gromadziński"
             className="font-display text-[14vw] md:text-[7vw] leading-[0.85] text-accent"
           >
             SERGIUSZ
@@ -80,14 +81,15 @@ function Hero() {
         </motion.div>
 
         <div className="flex items-end justify-between gap-6">
-          <motion.h1
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            aria-hidden="true"
             className="font-display text-[10vw] md:text-[5vw] leading-[0.85]"
           >
             GROMADZIŃSKI<span className="text-accent">.</span>
-          </motion.h1>
+          </motion.div>
           <div className="hidden md:block max-w-sm text-right">
             <p className="font-display text-xl leading-tight">
               Building software<br />that can think.
